@@ -40,6 +40,10 @@ function App() {
             </div>
           </div>
       </div>
+      <div id="notFound" class="not-found hidden">
+        <img src="/src/images/LocationNotFound.png" alt/>
+        <p>Oops! Location not found!</p>
+      </div>
     </div>
   </div>
 </div>
