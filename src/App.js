@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWater, faWind } from '@fortawesome/free-solid-svg-icons'
+import { faWater, faWind, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
@@ -10,43 +10,43 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="container">
-        <div className="input-container">
-          <input class="search-input" id="searchInput" placeholder="Enter city name"/>
-          <button class="search-button" id="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-        <div className="weather-container">
-          <div id="cityWeather" class="city-weather hidden">
-            <img class="icon" id="icon" alt/>
-            <h1 class="temperature" id="temperature"></h1>
-            <h2 class="city" id="city"></h2>
-            <div className="details">
-              <div className="detail">
-                <FontAwesomeIcon icon={faWater} />
-                <div className="description">
-                  <p class="value" id="humidity">%</p>
-                  <p>Humidity</p>
-                </div>
-              </div>
-              <div className="detail">
-                <FontAwesomeIcon icon={faWind} />
-                <div className="description">
-                  <p class="value" id="wind">km/h</p>
-                  <p>Wind</p>
-              </div>
-            </div>
+    <div className="app">
+      {/* <div className="container">
+        <div className="top">
+          <div className="input-container">
+            <input class="search-input" id="searchInput" placeholder="Enter location"/>
+            <button class="search-button" id="searchButton">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
           </div>
-      </div>
-      <div id="notFound" class="not-found hidden">
-        <img src="/src/images/LocationNotFound.png" alt/>
-        <p>Oops! Location not found!</p>
+        </div> */}
+      <div className="weather-container">
+        <div className="top">
+          <div className="location">
+            <p>London</p>
+          </div>
+          <div className="temperature">
+            <h1>25°C</h1>
+          </div>
+          <div className="description">
+            <p>Cloudy</p>
+          </div>
+        </div>
+        <div className="bottom">
+          <div className="feels">
+            <p>25°C</p>
+          </div>
+          <div className="humidity">
+            <FontAwesomeIcon icon={faWater} />
+            <p>20%</p>
+          </div>
+          <div className="wind">
+            <FontAwesomeIcon icon={faWind} />
+            <p>5km/h</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
   );
 }
 
