@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWater, faWind, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faWater, faWind, faMagnifyingGlass, faTemperatureThreeQuarters } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
@@ -34,15 +34,19 @@ function App() {
         </div>
         <div className="bottom">
           <div className="feels">
-            <p>25°C</p>
+            <FontAwesomeIcon icon={faTemperatureThreeQuarters} />
+            <p className="bold">25°C</p>
+            <p>Feels like</p>
           </div>
           <div className="humidity">
             <FontAwesomeIcon icon={faWater} />
-            <p>20%</p>
+            <p className="bold">20%</p>
+            <p>Humidity</p>
           </div>
           <div className="wind">
             <FontAwesomeIcon icon={faWind} />
-            <p>5km/h</p>
+            <p className="bold">5km/h</p>
+            <p>Wind speed</p>
           </div>
         </div>
       </div>
