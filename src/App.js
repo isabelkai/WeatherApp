@@ -13,7 +13,7 @@ function App() {
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
       axios.get(url).then((res) => {
         setData(res.data);
         console.log(res.data);
@@ -36,32 +36,37 @@ function App() {
             type="text"/>
           </div>
           <div className="location">
-            <p>London</p>
+            <p>{data.name}</p>
           </div>
           <div className="temperature">
-            <h1>25°C</h1>
+            {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
           </div>
           <div className="description">
-            <p>Cloudy</p>
+            {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
         </div>
-        <div className="bottom">
-          <div className="detail">
-            <FontAwesomeIcon icon={faTemperatureThreeQuarters} />
-            <p className="value">25°C</p>
-            <p>Feels like</p>
+
+
+        {data.name != undefined &&
+          <div className="bottom">
+            <div className="feels">
+              <FontAwesomeIcon icon={faTemperatureThreeQuarters} />
+              {data.main ? <p className="value">{data.main.feels_like.toFixed()}°C</p> : null}
+              <p>Feels like</p>
+            </div>
+            <div className="humidity">
+              <FontAwesomeIcon icon={faWater} />
+              {data.main ? <p className="value">{data.main.humidity}%</p> : null}
+              <p>Humidity</p>
+            </div>
+            <div className="wind">
+              <FontAwesomeIcon icon={faWind} />
+              {data.wind ? <p className="value">{data.wind.speed.toFixed()}km/h</p> : null}
+              <p>Wind speed</p>
+            </div>
           </div>
-          <div className="detail">
-            <FontAwesomeIcon icon={faWater} />
-            <p className="value">20%</p>
-            <p>Humidity</p>
-          </div>
-          <div className="detail">
-            <FontAwesomeIcon icon={faWind} />
-            <p className="value">5km/h</p>
-            <p>Wind speed</p>
-          </div>
-        </div>
+        }
+
       </div>
     </div>
   );
