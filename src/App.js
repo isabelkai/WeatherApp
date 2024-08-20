@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWater, faWind, faTemperatureThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import temperature from './images/temperature.png';
+import humidity from './images/humidity.png';
+import wind from './images/wind.png';
 
 
 function App() {
@@ -49,20 +52,20 @@ function App() {
 
         {data.name != undefined &&
           <div className="bottom">
-            <div className="feels">
-              <FontAwesomeIcon icon={faTemperatureThreeQuarters} />
+            <div className="detail">
+              <img src={temperature} alt="Temperature" />
               {data.main ? <p className="value">{data.main.feels_like.toFixed()}°C</p> : null}
-              <p>Feels like</p>
+              <p className="description">Feels like</p>
             </div>
-            <div className="humidity">
-              <FontAwesomeIcon icon={faWater} />
+            <div className="detail">
+              <img src={humidity} alt="Humidity" />
               {data.main ? <p className="value">{data.main.humidity}%</p> : null}
-              <p>Humidity</p>
+              <p className="description">Humidity</p>
             </div>
-            <div className="wind">
-              <FontAwesomeIcon icon={faWind} />
-              {data.wind ? <p className="value">{data.wind.speed.toFixed()}km/h</p> : null}
-              <p>Wind speed</p>
+            <div className="detail">
+              <img src={wind} alt="Wind" />
+              {data.wind ? <p className="value">{data.wind.speed.toFixed()} KM/H</p> : null}
+              <p className="description">Wind speed</p>
             </div>
           </div>
         }
