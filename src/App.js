@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWater, faWind, faTemperatureThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import background from './images/background.jpg';
 import temperature from './images/temperature.png';
 import humidity from './images/humidity.png';
 import wind from './images/wind.png';
@@ -27,7 +26,7 @@ function App() {
 
 
   return (
-    <div className="app"> 
+    <div className="app" style={{ backgroundImage: `url(${background})` }}> 
       <div className="weather-container">
         <div className="top">
           <div className="search">
@@ -54,18 +53,24 @@ function App() {
           <div className="bottom">
             <div className="detail">
               <img src={temperature} alt="Temperature" />
-              {data.main ? <p className="value">{data.main.feels_like.toFixed()}°C</p> : null}
-              <p className="description">Feels like</p>
+              <div className="description">
+                {data.main ? <p className="value">{data.main.feels_like.toFixed()}°C</p> : null}
+                <p className="text">Feels like</p>
+              </div>
             </div>
             <div className="detail">
               <img src={humidity} alt="Humidity" />
-              {data.main ? <p className="value">{data.main.humidity}%</p> : null}
-              <p className="description">Humidity</p>
+              <div className="description">
+                {data.main ? <p className="value">{data.main.humidity}%</p> : null}
+                <p className="text">Humidity</p>
+              </div>
             </div>
             <div className="detail">
               <img src={wind} alt="Wind" />
-              {data.wind ? <p className="value">{data.wind.speed.toFixed()} KM/H</p> : null}
-              <p className="description">Wind speed</p>
+              <div className="description">
+                {data.wind ? <p className="value">{data.wind.speed.toFixed()} KM/H</p> : null}
+                <p className="text">Wind speed</p>
+              </div>
             </div>
           </div>
         }
