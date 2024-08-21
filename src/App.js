@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import background from './images/background.jpg';
+import defaultBackground from './images/defaultBackground.jpg';
 import temperature from './images/temperature.png';
 import humidity from './images/humidity.png';
 import wind from './images/wind.png';
+import coldBackground from './images/cold.jpg';
+import warmBackground from './images/warm.jpg';
 
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
+  const [background, setBackground] = useState(defaultBackground);
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -18,11 +21,20 @@ function App() {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
       axios.get(url).then((res) => {
         setData(res.data);
+
+        //Update background image based on temperature
+        const temp = res.data.main.temp;
+        if (temp < 15) {
+          setBackground(coldBackground);
+        } else {
+          setBackground(warmBackground);
+        }
+
         console.log(res.data);
-      })
+      });
       setLocation('');
     }
-  }
+  };
 
 
   return (
