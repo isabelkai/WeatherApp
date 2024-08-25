@@ -12,7 +12,10 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
   const [background, setBackground] = useState(defaultBackground);
+  const [showWeatherContainer, setShowWeatherContainer] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [showBox, setShowBox] = useState(false);
+  const [showWeatherDetails, setShowWeatherDetails] = useState(false);
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -32,6 +35,10 @@ function App() {
         }*/
 
         setShowDetails(true);
+        setTimeout(() => setShowWeatherContainer(true), 100); // Show weather container first
+        setTimeout(() => setShowBox(true), 500);  // Delay for weather box
+        setTimeout(() => setShowWeatherDetails(true), 1000);  // Delay for details
+
       });
       setLocation('');
     }
@@ -51,8 +58,8 @@ function App() {
         </div>
 
         {showDetails && (
-          <div className="weather-container">
-            <div className="weather-box">
+          <div className={`weather-container ${showWeatherContainer ? 'show' : ''}`}>
+            <div className={`weather-box ${showBox ? 'show' : ''}`}>
               <div className="location">
                 <p>{data.name}</p>
               </div>
@@ -65,7 +72,7 @@ function App() {
             </div>
           
 
-            <div className="weather-details">
+            <div className={`weather-details ${showWeatherDetails ? 'show' : ''}`}>
               <div className="detail">
                 <img src={temperature} alt="Temperature" />
                 <div className="description">
