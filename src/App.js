@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import defaultBackground from './images/defaultBackground.jpg';
+import defaultBackground from './images/background.jpg';
 import temperature from './images/temperature.png';
 import humidity from './images/humidity.png';
-import wind from './images/wind.png';
+import wind from './images/windy.png';
 import coldBackground from './images/cold.jpg';
 import warmBackground from './images/warm.jpg';
+import locationError from './images/error.png';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
   const [showDetails, setShowDetails] = useState(false);
   const [showBox, setShowBox] = useState(false);
   const [showWeatherDetails, setShowWeatherDetails] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -25,19 +28,26 @@ function App() {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
       axios.get(url).then((res) => {
         setData(res.data);
+        setShowError(false);  // Hide error if the request is successful
 
         //Update background image based on temperature
-        /*const temp = res.data.main.temp;
+        const temp = res.data.main.temp;
         if (temp < 15) {
           setBackground(coldBackground);
         } else {
           setBackground(warmBackground);
-        }*/
+        }
 
         setShowDetails(true);
         setTimeout(() => setShowWeatherContainer(true), 100); // Show weather container first
         setTimeout(() => setShowBox(true), 500);  // Delay for weather box
         setTimeout(() => setShowWeatherDetails(true), 1000);  // Delay for details
+      })
+      .catch(() => {
+        setShowError(true);
+        setErrorMessage('Oops! Location not found!');
+        setShowDetails(false);
+        setTimeout(() => setShowError(false), 3000); // Hide error message after 3 seconds
 
       });
       setLocation('');
@@ -46,7 +56,7 @@ function App() {
 
 
   return (
-    <div className="app" style={{ backgroundImage: `url(${defaultBackground})` }}>
+    <div className="app" style={{ backgroundImage: `url(${background})` }}>
       <div className="container">
         <div className="search">
           <input
@@ -56,6 +66,13 @@ function App() {
             placeholder='Enter location'
             type="text" />
         </div>
+
+        {showError && (
+          <div className={`error-box ${showError ? 'slide-down' : ''}`}>
+            <img src={locationError} alt="Location Error" className="error-image"/>
+            <p>{errorMessage}</p>
+          </div>
+        )}
 
         {showDetails && (
           <div className={`weather-container ${showWeatherContainer ? 'show' : ''}`}>
