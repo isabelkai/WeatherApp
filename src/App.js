@@ -68,7 +68,7 @@ function App() {
         </div>
 
         {showError && (
-          <div className={`error-box ${showError ? 'slide-down' : ''}`}>
+          <div className={`error-box ${showError ? 'show' : ''}`}>
             <img src={locationError} alt="Location Error" className="error-image"/>
             <p>{errorMessage}</p>
           </div>
