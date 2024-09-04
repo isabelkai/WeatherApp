@@ -41,7 +41,7 @@ h1 {
   margin: auto;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   outline: none;
@@ -73,13 +73,13 @@ h1 {
   outline: none;
 }
 
-/* Weather container initially hidden above the screen */
+/* Weather container hidden above the screen */
 .weather-container {
   text-align: center;
   margin: 40px 0;
   opacity: 0;
   transform: translateY(-100%);
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 /* Weather container slides down when the weather data is fetched */
@@ -88,30 +88,24 @@ h1 {
   transform: translateY(0);
 }
 
-/* Weather box initially hidden */
-.weather-box {
+/* Weather information hidden off-screen */
+.weather-box, .weather-details {
   opacity: 0;
-  transform: translateY(-20px);
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  transform: translateY(-100px);
 }
 
-/* Weather box fades in when the weather data is fetched */
-.weather-box.show {
+/* Weather information slides down */
+.weather-box.show, .weather-details.show {
   opacity: 1;
   transform: translateY(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Weather details initially hidden */
-.weather-details {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-}
-
-/* Weather details fades in when the weather data is fetched */
-.weather-details.show {
+/* Subsequent searches: new weather information slides down*/
+.weather-box.slide, .weather-details.slide {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .app .weather-details {
@@ -143,19 +137,21 @@ h1 {
   font-size: 1.2rem;
 }
 
-/* Error container initially hidden above the screen */
+/* Error container hidden above the screen */
 .error-box {
   text-align: center;
   margin: 40px 0;
+  width: 500px;
+  height: 300px;
   opacity: 0;
   transform: translateY(-100%);
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 /* Error container slides down when error occurs */
 .error-box.show {
   opacity: 1;
   transform: translateY(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .error-box .error-image {

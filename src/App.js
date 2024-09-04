@@ -19,6 +19,7 @@ function App() {
   const [showWeatherDetails, setShowWeatherDetails] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [firstSearchDone, setFirstSearchDone] = useState(false);
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -32,16 +33,20 @@ function App() {
 
         //Update background image based on temperature
         const temp = res.data.main.temp;
-        if (temp < 15) {
-          setBackground(coldBackground);
-        } else {
-          setBackground(warmBackground);
-        }
+        setBackground(temp < 15 ? coldBackground : warmBackground);
+
+        // Reset states for animation
+        setShowDetails(false);
+        setShowWeatherContainer(false);
+        setShowBox(false);
+        setShowWeatherDetails(false);
 
         setShowDetails(true);
         setTimeout(() => setShowWeatherContainer(true), 100); // Show weather container first
         setTimeout(() => setShowBox(true), 500);  // Delay for weather box
         setTimeout(() => setShowWeatherDetails(true), 1000);  // Delay for details
+
+        setFirstSearchDone(true);
       })
       .catch(() => {
         setShowError(true);
@@ -76,7 +81,7 @@ function App() {
 
         {showDetails && (
           <div className={`weather-container ${showWeatherContainer ? 'show' : ''}`}>
-            <div className={`weather-box ${showBox ? 'show' : ''}`}>
+            <div className={`weather-box ${showBox ? (firstSearchDone ? 'slide' : 'show') : ''}`}>
               <div className="location">
                 <p>{data.name}</p>
               </div>
@@ -89,7 +94,7 @@ function App() {
             </div>
           
 
-            <div className={`weather-details ${showWeatherDetails ? 'show' : ''}`}>
+            <div className={`weather-details ${showWeatherDetails ? (firstSearchDone ? 'slide' : 'show') : ''}`}>
               <div className="detail">
                 <img src={temperature} alt="Temperature" />
                 <div className="description">
