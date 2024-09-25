@@ -6,21 +6,21 @@ This __Weather App__ is a simple, React-based application that allows users to v
 
 ### Features
 
-..* __Real-time weather data__: Fetches up-to-date weather information using the OpenWeatherMap API.
-..* __Dynamic backgrounds__: The background image changes based on the temperature:
-Cold background for temperatures ≤ 10°C.
-Warm background for temperatures between 11°C and 20°C.
-Hot background for temperatures ≥ 21°C.
-..* __Slide-in animations__: The weather information smoothly slides in after the first search and also on subsequent searches
-..* __Weather details__: Displays temperature, weather description, "feels like" temperature, humidity, and wind speed.
-..* __Error handling__: If the location is not found, a custom error message is shown.
+* __Real-time weather data__: Fetches up-to-date weather information using the OpenWeatherMap API.
+* __Dynamic backgrounds__: The background image changes based on the temperature:
+⋅⋅⋅Cold background for temperatures ≤ 10°C.⋅⋅
+⋅⋅⋅Warm background for temperatures between 11°C and 20°C.⋅⋅
+⋅⋅⋅Hot background for temperatures ≥ 21°C.⋅⋅
+* __Slide-in animations__: The weather information smoothly slides in after the first search and also on subsequent searches
+* __Weather details__: Displays temperature, weather description, "feels like" temperature, humidity, and wind speed.
+* __Error handling__: If the location is not found, a custom error message is shown.
 
 ### Technologies used
 
-..* __React__: For building the user interface.
-..* __Axios__: For making API requests to the OpenWeatherMap API.
-..* __CSS transitions__: For animations like sliding in the weather info.
-..* __OpenWeatherMap API__: For retrieving real-time weather data.
+* __React__: For building the user interface.
+* __Axios__: For making API requests to the OpenWeatherMap API.
+* __CSS transitions__: For animations like sliding in the weather info.
+* __OpenWeatherMap API__: For retrieving real-time weather data.
 
 ### Pictures
 
@@ -42,8 +42,8 @@ How the app looks:
 
 #### Prerequisites
 
-..* Node.js (version >= 14.x)
-..* npm (version >= 6.x)
+* Node.js (version >= 14.x)
+* npm (version >= 6.x)
 
 #### Setup
 
@@ -64,6 +64,6 @@ The app should now be running at http://localhost:3000/.
 
 ### Future improvements and development ideas
 
-..* __Hourly/Weekly forecasts__: Extend the app to show more detailed forecasts.
-..* __Unit conversion__: Add the ability to toggle between Celsius and Fahrenheit.
-..* __Better error message__: I'm not happy with the error message, I would like it to appear more smoother.
+* __Hourly/Weekly forecasts__: Extend the app to show more detailed forecasts.
+* __Unit conversion__: Add the ability to toggle between Celsius and Fahrenheit.
+* __Better error message__: I'm not happy with the error message, I would like it to appear more smoother.
