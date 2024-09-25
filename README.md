@@ -7,7 +7,7 @@ This __Weather App__ is a simple, React-based application that allows users to v
 ### Features
 
 * __Real-time weather data__: Fetches up-to-date weather information using the OpenWeatherMap API.
-* __Dynamic backgrounds__: The background image changes based on the temperature:
+* __Dynamic backgrounds__: The background image changes based on the temperature:  
 &nbsp;&nbsp;&nbsp;&nbsp;Cold background for temperatures ≤ 10°C.  
 &nbsp;&nbsp;&nbsp;&nbsp;Warm background for temperatures between 11°C and 20°C.  
 &nbsp;&nbsp;&nbsp;&nbsp;Hot background for temperatures ≥ 21°C.  
