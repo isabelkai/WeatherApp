@@ -6,6 +6,7 @@ import humidity from './images/humidity.png';
 import wind from './images/windy.png';
 import coldBackground from './images/cold.jpg';
 import warmBackground from './images/warm.jpg';
+import hotBackground from './images/hot.jpg';
 import locationError from './images/error.png';
 
 
@@ -33,7 +34,13 @@ function App() {
 
         //Update background image based on temperature
         const temp = res.data.main.temp;
-        setBackground(temp < 15 ? coldBackground : warmBackground);
+        if (temp <= 10) {
+          setBackground(coldBackground);  // Cold background for 10°C or colder
+        } else if (temp >= 11 && temp <= 20) {
+          setBackground(warmBackground);  // Warm background for 11°C to 20°C
+        } else {
+          setBackground(hotBackground);   // Hot background for 21°C or warmer
+        }
 
         // Reset states for animation
         setShowDetails(false);
