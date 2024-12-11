@@ -61,9 +61,3 @@ The app should now be running at http://localhost:3000/.
 2. Enter a city name in the search bar and press Enter.
 3. The app will display the current temperature, weather description, "feels like" temperature, humidity, and wind speed.
 4. If the city is not found, an error message will appear to inform you of the issue.
-
-### Future improvements and development ideas
-
-* __Hourly/Weekly forecasts__: Extend the app to show more detailed forecasts.
-* __Unit conversion__: Add the ability to toggle between Celsius and Fahrenheit.
-* __Better error message__: I'm not happy with the error message, I would like it to appear more smoother.
